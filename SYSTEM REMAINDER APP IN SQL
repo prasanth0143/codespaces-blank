@@ -1,0 +1,24 @@
+-- Create a table to store reminders
+CREATE TABLE Reminders (
+    reminder_id INT PRIMARY KEY AUTO_INCREMENT,
+    day_of_week VARCHAR(10) NOT NULL,
+    time_of_day TIME NOT NULL,
+    activity VARCHAR(100) NOT NULL
+);
+
+-- Insert some sample reminders
+INSERT INTO Reminders (day_of_week, time_of_day, activity)
+VALUES
+    ('Monday', '08:00:00', 'Wake up'),
+    ('Monday', '10:00:00', 'Go to gym'),
+    ('Monday', '12:00:00', 'Lunch'),
+    ('Tuesday', '07:00:00', 'Wake up'),
+    ('Tuesday', '18:00:00', 'Dinner');
+
+-- Query to retrieve reminders for a specific day and time
+SELECT * FROM Reminders
+WHERE day_of_week = 'Monday' AND time_of_day <= '09:00:00';
+
+-- Query to delete reminders for a specific day and time
+DELETE FROM Reminders
+WHERE day_of_week = 'Monday' AND time_of_day = '10:00:00';
