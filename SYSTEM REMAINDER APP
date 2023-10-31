@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Reminder App</title>
+</head>
+<body>
+    <h1>Simple Reminder App</h1>
+    
+    <label for="daySelect">Select Day:</label>
+    <select id="daySelect">
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+        <option value="Saturday">Saturday</option>
+        <option value="Sunday">Sunday</option>
+    </select>
+    
+    <label for="timeSelect">Select Time:</label>
+    <input type="time" id="timeSelect">
+    
+    <label for="activitySelect">Select Activity:</label>
+    <select id="activitySelect">
+        <option value="Wake up">Wake up</option>
+        <option value="Go to gym">Go to gym</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Meetings">Meetings</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Quick nap">Quick nap</option>
+        <option value="Go to library">Go to library</option>
+        <option value="Dinner">Dinner</option>
+        <option value="Go to sleep">Go to sleep</option>
+    </select>
+    
+    <button onclick="setReminder()">Set Reminder</button>
+    
+    <script>
+        function setReminder() {
+            const day = document.getElementById("daySelect").value;
+            const time = document.getElementById("timeSelect").value;
+            const activity = document.getElementById("activitySelect").value;
+            
+            const now = new Date();
+            const reminderTime = new Date(`${day} ${time}`);
+            
+            const timeDifference = reminderTime - now;
+            
+            if (timeDifference <= 0) {
+                alert("Invalid time. Please select a future time.");
+            } else {
+                setTimeout(function() {
+                    alert(`Time to ${activity}!`);
+                    playChimeSound(); // You need to implement this function to play a sound
+                }, timeDifference);
+            }
+        }
+        
+        function playChimeSound() {
+            // Implement this function to play a sound or chime
+            alert("Chime sound should play here.");
+        }
+    </script>
+</body>
+</html>
